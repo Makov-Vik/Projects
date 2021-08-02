@@ -12,38 +12,46 @@ if (isset($_POST['asym_decryption'])) {
   $out = mb_str_split($_POST['text_input']); // splitting the input string into characters
   $date = idate('d');
 
-  for ($i = 0; $i < count($out); $i++) {
-    $out[$i] = mb_ord("$out[$i]", "utf8");
-  } 
-  
-  for ($i = count($out) - 1; $i > 0 ; $i--) { // untangling
-    $out[$i] = $out[$i] - $out[$i - 1];
+  set_error_handler(function ($severity, $message, $file, $line) {
+    throw new  \ErrorException($message, $severity, $severity, $file, $line);
+  });
 
-  } 
-
-  for ($i = 0; $i < count($out) - 1; $i++) {
-    ///  magic number 33 ===================================================================================
-    $out[$i + 1] = $out[$i + 1] - $date - 33;
+  try{
+    for ($i = 0; $i < count($out); $i++) {
+      $out[$i] = mb_ord("$out[$i]", "utf8");
+    } 
     
-     $out[$i + 1]  = bcmod(bcpow($out[$i + 1], $firstKey), $secondKey); // asymmetric decryption
+    for ($i = count($out) - 1; $i > 0 ; $i--) { // untangling
+      $out[$i] = $out[$i] - $out[$i - 1];
+
+    } 
+
+    for ($i = 0; $i < count($out) - 1; $i++) {
+      ///  magic number 33 ===================================================================================
+      $out[$i + 1] = $out[$i + 1] - $date - 33;
+      
+      $out[$i + 1]  = bcmod(bcpow($out[$i + 1], $firstKey), $secondKey); // asymmetric decryption
+      
+    }
+
+    for ($i = 1; $i < count($out); $i++) {
+      $out[$i] = mb_chr($out[$i], "utf8");
+    }  
+    array_shift($out);
+    $outstring = implode("", $out);
     
-  }
+    echo "<br><div class = 'mt-10', id = 'text_out' >$outstring<div>";
+    
+    require('connection.php');
 
-  for ($i = 1; $i < count($out); $i++) {
-    $out[$i] = mb_chr($out[$i], "utf8");
-  }  
-  array_shift($out);
-  $outstring = implode("", $out);
-  
-  echo "<br><div class = 'mt-10', id = 'text_out' >$outstring<div>";
-  
-  require('connection.php');
+    $sqlPrivateKey = "INSERT INTO history (text_encrypted, text_decrypted) VALUES ('$input_text', '$outstring')";
+    if (mysqli_query($connection, $sqlPrivateKey)) {
+    } else {
+        echo "Error: " . $sqlPrivateKey . "<br>" . mysqli_error($connection);
+    }
 
-  $sqlPrivateKey = "INSERT INTO history (text_encrypted, text_decrypted) VALUES ('$input_text', '$outstring')";
-  if (mysqli_query($connection, $sqlPrivateKey)) {
-  } else {
-      echo "Error: " . $sqlPrivateKey . "<br>" . mysqli_error($connection);
+  }catch (Throwable  $e) {
+  echo  '<br>' . $e->getMessage() .  ". Wrong key";
   }
 } 
-
 ?>

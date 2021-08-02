@@ -1,13 +1,9 @@
 <?php
 
-
-$input_text ="";
 $input_text = $_POST['text_input'];
 
-$openKey = '';
 $openKey = $_POST['open_key_field'];
 
-$privateKey = '';
 $privateKey = $_POST['private_key_field'];
 
 ?>
@@ -50,7 +46,7 @@ $privateKey = $_POST['private_key_field'];
 ?> 
 
 
-<br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br />
 <h3 id = 'open_inscription'>Your Open Key </h3>
 
 <input type='text' name='open_key_field' id='open_key_field' size="40" value="<?=$openKey?>">
@@ -70,11 +66,18 @@ require('connection.php');
 
 if (isset($_POST['get_history'])) {
 
-  $sql = "SELECT * FROM history";
-  if($result = $connection->query($sql)){
-      echo '<br>';
-      while($row = $result->fetch_array()){
-          
+  $ifDelete = explode(' ',$input_text);
+  $ifDelete[0] = strtolower($ifDelete[0]);
+  if(($ifDelete[0] == 'delete') and is_int(intval($ifDelete[1]))) {
+    $sql = "DELETE FROM history WHERE id = '$ifDelete[1]'";
+    mysqli_query($connection, $sql);
+  }
+  else {
+    $sql = "SELECT * FROM history";
+    if($result = $connection->query($sql)){
+        echo '<br>';
+        while($row = $result->fetch_array()){
+            
           $id = $row["id"];
           $text_encrypted = $row["text_encrypted"];
           $text_decrypted = $row["text_decrypted"];
@@ -83,7 +86,8 @@ if (isset($_POST['get_history'])) {
           echo str_repeat('&nbsp;', 6); 
           echo   $text_decrypted . "<br><br>" ;
 
-      }
+        }
+    }
   }
 }
 ?>
