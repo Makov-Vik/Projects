@@ -1,0 +1,138 @@
+body{
+	font-family:"Segoe UI";
+	background-color:#202020;
+  color:#FFFFFF;
+
+}
+input[type=text] {
+  border-radius:10px;
+  justify-content:right;
+  align-items: center;
+  height: 10vh;
+  width: 70vh; 
+  margin-left: (5rem);
+  
+}
+
+body {
+  justify-content:right;
+  align-items: center;
+  min-height: 10vh;
+  margin-top: calc(2rem);
+}
+
+.unencrypt{
+  justify-content:right;
+  align-items: center;
+  min-height: 5vh;
+}
+
+#text_out{
+  justify-content:right;
+  align-items: center;
+  min-height: 5vh;
+  color:#FFA500;
+  top: 10px;
+}
+
+
+#open_inscription{
+  margin-top: 500px;
+  text-align:left;
+	color:#FFFFFF;
+  display:inline;
+}
+
+#open_key_field {
+  position: relative;
+  display: block;
+  border-radius:10px;
+  width: 50vh;
+  height: 5vh;
+  
+}
+
+#private_inscription{
+  text-align:left;
+	color:#FFFFFF;
+  display:inline;
+}
+
+#private_key_field {
+  display: block;
+  width: 50vh;
+  height: 5vh;
+  border-radius:10px;
+  
+}
+
+.button {
+  position: absolute ;
+  min-height: 5vh;
+  min-width: 10vh;
+  margin-left: calc(40rem + 2px);
+  border-radius:20px;
+}
+
+#asym_cipher {
+  position: absolute ;
+  min-height: 5vh;
+  min-width: 10vh;
+  margin-left: calc(40rem + 100px);
+  border-radius:20px;
+}
+#asym_decryption {
+  position: absolute ;
+  min-height: 5vh;
+  min-width: 10vh;
+  margin-left: calc(50rem + 100px);
+  border-radius:20px;
+}
+
+#get_history{
+  position: absolute ;
+  min-height: 5vh;
+  min-width: 10vh;
+  border-radius:20px;
+  margin-left: calc(62rem + 100px);
+}
+
+#text_history{
+  margin-left: calc(15rem + 300px);
+}
+
+#Asymmetrically{
+  position: absolute ;
+  min-height: 5vh;
+  min-width: 10vh;
+  margin-left: calc(2rem + 2px);
+}
+
+h1, #motto{
+	text-align:center;
+	color:#FFFFFF;
+	
+}
+
+a{
+	color:#cdd4ca;
+
+}
+
+mark{
+	background-color:#FFA500;
+}
+span{
+  background-color:#FFA500;
+	border: 2px solid #FFA500;
+	border-radius: 5px;
+
+}
+nav ul{
+	display:flex;
+	justify-content:space-around;
+	background-color: #252525;
+	height: 40px;
+	padding-top:20px;
+	border-style: dotted;
+}
