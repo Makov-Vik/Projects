@@ -116,6 +116,6 @@ $xml->appendChild($yml_catalog);
 
 
 $xml->save('C:\OpenServer\domains\work\resources\views\outfile.xml');
-echo 'Okey baby';
+echo 'Okey';
 
 ?>
