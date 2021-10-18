@@ -1,0 +1,43 @@
+{
+	"folders": [
+		{
+			"name": "Course_Work",
+			"path": "..\\..\\..\\..\\..\\Users\\DNS\\Documents\\GitHub\\Course_Work"
+		},
+		{
+			"name": "TimeBot",
+			"path": "..\\..\\..\\..\\..\\Users\\DNS\\Documents\\GitHub\\TimeBot"
+		},
+		{
+			"name": "-Anything",
+			"path": "..\\..\\..\\..\\..\\Users\\DNS\\Documents\\GitHub\\-Anything"
+		},
+		{
+			"name": "BasPrac--Exer",
+			"path": "..\\..\\..\\..\\..\\Users\\DNS\\Documents\\GitHub\\BasPrac--Exer"
+		},
+		{
+			"name": "Lab---ASD-",
+			"path": "..\\..\\..\\..\\..\\Users\\DNS\\Documents\\GitHub\\Lab---ASD-"
+		},
+		{
+			"name": "test.com",
+			"path": "..\\..\\..\\test.com"
+		},
+		{
+			"path": "..\\..\\..\\cipher.com"
+		},
+		{
+			"path": "..\\.."
+		},
+		{
+			"path": "..\\..\\..\\delete"
+		},
+		{
+			"path": "..\\..\\..\\..\\..\\Users\\DNS\\Documents\\GitHub\\db"
+		}
+	],
+	"settings": {
+		"git.autofetch": true
+	}
+}
